@@ -1,0 +1,56 @@
+.login-button {
+  display: flex;
+  justify-content: flex-end;
+  margin: 20px;
+  cursor: pointer;
+}
+.loginMargin {
+  margin-left: 7px;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+}
+
+/* list-style-type은 앞에 붙는 스타일 없애기 */
+.menu-list {
+  display: flex;
+  list-style-type: none;
+}
+
+.menu-list li {
+  padding: 10px;
+}
+
+.menu-area {
+  display: flex;
+  justify-content: center; /* Center the menu horizontally */
+  align-items: center;
+}
+
+.search {
+  margin-left: 10px;
+}
+
+.search input {
+  margin-left: 10px;
+}
+
+#dropdown-basic {
+  border: 1px solid #ccc; /* 회색 계열의 테두리 색상 추가 */
+}
+
+.logout {
+  display: flex;
+  justify-content: flex-end;
+  margin: 20px;
+  cursor: pointer;
+}
+
+.login {
+  display: flex;
+  justify-content: flex-end;
+  margin: 20px;
+  cursor: pointer;
+}

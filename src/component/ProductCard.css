@@ -1,0 +1,12 @@
+.product-card {
+  transition: transform 0.3s ease;
+}
+
+.product-card.hovered {
+  transform: scale(1.1);
+}
+
+.product-card img {
+  width: 100%;
+  height: auto;
+}
