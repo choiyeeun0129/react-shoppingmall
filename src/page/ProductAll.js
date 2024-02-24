@@ -2,18 +2,18 @@ import React, { useEffect, useState } from "react";
 import ProductCard from "../component/ProductCard";
 import { Col, Container, Row } from "react-bootstrap";
 import { useSearchParams } from "react-router-dom";
+import { productAction } from "../redux/actions/productAction";
+import { useDispatch, useSelector } from "react-redux";
 
 const ProductAll = () => {
-  const [productList, setProductList] = useState([]);
+  const productList = useSelector((state) => state.product.productList);
   const [query, setQuery] = useSearchParams();
+  const dispatch = useDispatch();
 
   const getProducts = async () => {
     let searchQuery = query.get("q") || "";
     console.log(searchQuery);
-    let url = `https://my-json-server.typicode.com/choiyeeun0129/react-shoppingmall/products?q=${searchQuery}`; // API 엔드포인트 URL 생성
-    let res = await fetch(url); // API에 GET 요청을 보내고 응답을 받음
-    let data = await res.json(); // 응답 데이터를 JSON 형식으로 변환하여 가져옴
-    setProductList(data);
+    dispatch(productAction.getProducts(searchQuery));
   };
   useEffect(() => {
     getProducts();

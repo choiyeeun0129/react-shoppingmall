@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faUser } from "@fortawesome/free-solid-svg-icons";
 import { TextField } from "@mui/material";
@@ -15,8 +15,15 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
     "sale",
     "지속가능성",
   ];
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
+
+  const isAuthenticated = useSelector((state) => state.auth.authenticate);
+
+  const changeLogout = () => {
+    dispatch({ type: "LOGOUT" });
+  };
 
   const goToLogin = () => {
     navigate("/login");
@@ -35,13 +42,13 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
 
   return (
     <div>
-      {authenticate ? (
-        <div onClick={() => setAuthenticate(false)} className="logout">
+      {isAuthenticated ? (
+        <div onClick={changeLogout} className="logout">
           <FontAwesomeIcon icon={faUser} />
           <span>로그아웃</span>
         </div>
       ) : (
-        <div onClick={() => navigate("/login")} className="login">
+        <div onClick={goToLogin} className="login">
           <FontAwesomeIcon icon={faUser} />
           <span>로그인</span>
         </div>
